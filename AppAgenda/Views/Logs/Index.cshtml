@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AppAgenda.Models.Log>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Logs</h2>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PessoaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoContato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PessoaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoContato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+﻿@model AppAgenda.Models.Pessoa
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Cadastrar novo Contato</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Insira o Nome"} })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Telefones, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            <button class="btn btn-primary form-control" id="btn-add-Tel">Add Telefone</button>
+        </div>
+        <div class="col-md-8" id="div-Tel">
+            <!--  AQUI ENTRA A DIV DOS TELEFONES -->
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Emails, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            <button class="btn btn-primary form-control" id="btn-add-Mail">Add Email</button>
+        </div>
+        <div class="col-md-8" id="div-Mail">
+            <!--  AQUI ENTRA A DIV DOS EMAILS -->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-default"/>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/criacao-telefones.js"></script>
+    <script src="~/Scripts/criacao-mails.js"></script>
+    <script src="~/Scripts/validacao.js"></script>
+}

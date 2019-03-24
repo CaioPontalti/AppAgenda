@@ -1,0 +1,46 @@
+﻿@model AppAgenda.Models.Pessoa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            E-mails
+        </dt>
+
+        <dd>
+            @foreach (var mail in Model.Emails)
+            {
+                <p>@mail.Descricao</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefones)
+        </dt>
+        <dd>
+            @foreach (var tel in Model.Telefones)
+            {
+                <p>(@tel.DDD) @tel.Numero - <b>@tel.Tipo</b></p>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
